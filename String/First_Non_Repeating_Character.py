@@ -7,7 +7,8 @@
 # string = abcdcaf
 # Sample Output:
 # 1 
-
+ 
+# O(n) time, O(1) space
 def find(string):
     count = dict()
     # add characters with their count in the dictionary
