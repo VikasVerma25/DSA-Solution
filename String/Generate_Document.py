@@ -16,6 +16,7 @@
 # Sample Output:
 # true
 
+# O(m+n) time, O(c) space
 def checkdocument(characters, document):
     charcount = dict()
     # add characters in dictionary or increase the count
