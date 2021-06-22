@@ -3,7 +3,7 @@
 # string that's written the same forward and backward. Note that single-character 
 # strings are palindromes.
 
-
+# O(n/2) = O(n) time
 def check(string):
     end = len(string)-1
     for front in range(len(string)//2):
