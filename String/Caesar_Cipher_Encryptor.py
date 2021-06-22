@@ -15,14 +15,13 @@
 
 def encryptor(string, key):
     key = key % 26
+    # to store already encrypted character
     for i in range(len(string)):
         ascii = ord(string[i])
-        for k in range(1,key+1):
-            if chr(ascii) == 'z':
-                ascii = ord('a')
-            else:
-                ascii += 1
-        string[i] = chr(ascii)
+        ascii += key
+        if ascii > 122:
+            ascii = 96 + (ascii-122)
+        string[i] = chr(ascii)        
     return "".join(string)
 
 # string = input("string = ")
