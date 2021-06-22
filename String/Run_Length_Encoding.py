@@ -20,14 +20,17 @@ def runlength(string):
     count = 0
     result = ""
     for i in range(len(string)):
+        # if character is being matched increase count
         if ch == string[i]:
             count += 1
         else:
+            # add the result, set ch to current character and count to 1
             if count%9 == 0: result += f"9{ch}"*(count//9)
             else: result += f"9{ch}"*(count//9) + f"{count%9}{ch}"
             count = 1
             ch = string[i]
         if i == len(string)-1:
+            # when it reaches last add to the result
             if count%9 == 0: result += f"9{ch}"*(count//9)
             else: result += f"9{ch}"*(count//9) + f"{count%9}{ch}"
     return result
