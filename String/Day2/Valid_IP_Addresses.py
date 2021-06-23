@@ -12,6 +12,7 @@
 # should return an empty list. Note: check out our Systems Design 
 # Fundamentals on SystemsExpert to learn more about IP addresses!
 
+# input size is fixed or limited so complexity is O(1)
 def validIP(string, part="", ip="", answer=[], i=0, count = 0):
     strlen = len(string)
     # return back if part or string is not valid or we have more than 4 parts count
