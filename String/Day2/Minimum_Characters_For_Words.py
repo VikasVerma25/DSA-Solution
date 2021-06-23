@@ -5,6 +5,7 @@
 # won't contain any spaces; however, they might contain punctuation and/or 
 # special characters.
 
+# O(n*m) time, n is number of words and m is length of longest word
 def minCharacters(wordarray):
     minchars = dict()
     for word in wordarray:
