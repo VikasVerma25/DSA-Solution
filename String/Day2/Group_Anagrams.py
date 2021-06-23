@@ -14,7 +14,7 @@ def group(words):
     group = dict()
     for word in words:
         # sort the word and 
-        key = "".join(sorted(word))  # sorted into list and converted to string
+        key = "".join(sorted(word))  # sorted into list and converted to string # O(nlogn)
         # add key-word or append the word for key (if already there) to dictionary
         if key in group:
             group[key].append(word)
