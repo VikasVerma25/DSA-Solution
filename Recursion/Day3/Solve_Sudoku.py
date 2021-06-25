@@ -11,26 +11,36 @@
 
 def isvalid(n, board, row, col):
     # element is in same row
-    if n in board[0]:
+    if n in board[row]:
         return False
     # element is in same coloumn
-    if n in board[:,1]:
-        return False
+    for i in range(9):
+        if board[i][col] == n:
+            return False
 
+    rbox = row//3*3
+    cbox = col//3*3
+    # element in current box
+    for i in range(rbox, rbox+3):
+        for j in range(cbox, cbox+3):
+            if board[i][j] == n:
+                return False
+    return True
 
-def nextempty(board,l):
+def nextempty(board, l):
+    # find the next empty space
     for row in range(9):
         for col in range(9):
             if board[row][col] == 0:
-                l = [row, col]
+                l[0], l[1] = row, col
                 return True
     return False
 
 def solveSudoko(board):
-    l = []    # for storing row and col
+    l = [0,0]    # for storing row and col
     # if no empty space is there then the board is solved
     if not nextempty(board, l):  
-        return True                   
+        return True              
     row, col = l[0], l[1]
     for n in range(1,10): 
         # check if number will be valid at this position           
@@ -49,3 +59,16 @@ def sudoko(board):
         print(board)
     else:
         print("can't be solved")
+
+board = [
+    [7,8,0,4,0,0,1,2,0],
+    [6,0,0,0,7,5,0,0,9],
+    [0,0,0,6,0,1,0,7,8],
+    [0,0,7,0,4,0,2,6,0],
+    [0,0,1,0,5,0,9,3,0],
+    [9,0,4,0,6,0,0,0,5],
+    [0,7,0,3,0,0,0,1,2],
+    [1,2,0,0,0,7,4,0,0],
+    [0,4,9,2,0,6,0,0,7],
+]
+sudoko(board)
