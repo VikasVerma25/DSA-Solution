@@ -27,9 +27,16 @@ def substring(string):
                 elements.pop(string[j])
             # new start index value that will be used for next subarray
             start = newstart
+        # reaching last index, where character is not in dictionary
+        elif i == len(string)-1:
+            subs = string[start:i+1]
+            if len(subs) > len(longest):
+                longest = subs
         # add character to dictionary
         elements[string[i]] = i
+
     # return longest substring
     return longest
 
+# print(substring("clementisacap"))
 print(substring("clementisacap"))
