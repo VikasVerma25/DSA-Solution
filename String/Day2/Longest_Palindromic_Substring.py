@@ -7,22 +7,19 @@
 # Sample Output:
 # xyzzyx
 
-# O(n^2) time, O(n) space
+# O(n^3) time, O(1) space
 def longestPalindrome(string):
     if checkPalindrome(string):
         return string
-    substring = []
-    append = substring.append
+    longest = ''
     # get all substrings
     for i in range(len(string)):
         for j in range(i,len(string)):
-            append(string[i:j+1])    
-    longest = ''    
-    for current in substring:
-        # check if the substring is palindrome
-        # if it is palindrome and longer than previous palindrom then set longest to current
-        if checkPalindrome(current) and len(current)>len(longest):
-            longest = current
+            current = string[i:j+1] 
+            # check if the substring is palindrome
+            # if it is palindrome and longer than previous palindrom then set longest to current
+            if checkPalindrome(current) and len(current)>len(longest):
+                longest = current  
     # return the longest palindrome
     return longest
 
@@ -37,3 +34,26 @@ def checkPalindrome(string):
     return True
 
 print(longestPalindrome("abaxyzzyxf"))
+
+####### dynamic programming #######
+# O(n^2) time, O(n^2) space
+def longest(string):
+    l = len(string)
+    m = [[0 for i in range(l)]for j in range(l)]
+    ans = ""
+    for d in range(l):   # diagonal
+        i = 0
+        for j in range(d,l):
+            if d == 0:
+                m[i][j] = 1
+            elif d == 1 and string[i] == string[j]:
+                m[i][j] = 1
+            else:
+                if string[i] == string[j] and m[i+1][j-1] == 1:
+                    m[i][j] = 1
+            if m[i][j] == 1 and len(string[i:j+1]) > len(ans):
+                ans = string[i:j+1]
+            i += 1
+    return ans
+print(longest("abaxyzzyxf"))
+            
